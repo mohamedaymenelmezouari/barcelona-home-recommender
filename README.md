@@ -128,11 +128,11 @@ Leave-one-out across all 1,200 synthetic buyers at k=10.
 
 | Method | Recall@10 | NDCG@10 | Coverage | Novelty | Diversity | Nbhd. bias | Rec-gen time |
 |---|---|---|---|---|---|---|---|
-| Popularity | 0.0000 | 0.0000 | 0.03% | 5.09 | 1.41 | 0.77 | 4.91s |
-| Item-based CF | 0.0025 | 0.0008 | 12.6% | 6.62 | 1.58 | 0.19 | 3.14s |
-| User-based CF | 0.0050 | 0.0015 | 3.3% | 5.78 | 1.47 | 0.33 | 2.46s |
-| Content-based | 0.0025 | 0.0008 | 1.6% | 6.75 | 0.35 | 0.45 | 4.61s |
-| Matrix Factorization (ALS) | 0.0042 | 0.0020 | 3.7% | 5.95 | 1.61 | 0.29 | 0.51s |
+| Popularity | 0.0000 | 0.0000 | 0.03% | 5.09 | 1.41 | 0.77 | 4.84s |
+| Item-based CF | 0.0025 | 0.0008 | 12.6% | 6.62 | 1.58 | 0.19 | 3.17s |
+| User-based CF | 0.0050 | 0.0015 | 3.3% | 5.78 | 1.47 | 0.33 | 2.37s |
+| Content-based | 0.0025 | 0.0008 | 1.6% | 6.75 | 0.35 | 0.45 | 4.49s |
+| Matrix Factorization (ALS) | 0.0042 | 0.0020 | 3.7% | 5.95 | 1.61 | 0.29 | 0.48s |
 
 Coverage is the share of the 46.7k catalog ever recommended. Novelty
 is the average inverse popularity of recommended items (higher means
