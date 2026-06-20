@@ -9,8 +9,7 @@ exposed through a multi-view Streamlit application.
 
 ## Live demo
 
-Deploy on [Streamlit Community Cloud](https://share.streamlit.io) — point it at
-`app/streamlit_app.py` on the `main` branch.
+https://barcelona-home-recommender.streamlit.app/
 
 ## Domain and dataset
 
