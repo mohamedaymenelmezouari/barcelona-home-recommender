@@ -1,9 +1,16 @@
 # Barcelona Home Recommender
 
+> **Done by:** Mohamed Aymen Elmezouari — Esade Recommender Systems
+
 A real-estate recommender systems prototype built for the Esade Recommender
 Systems class. Five techniques are implemented end to end on the same
 dataset, compared on accuracy plus diversity, novelty, and bias, and
 exposed through a multi-view Streamlit application.
+
+## Live demo
+
+Deploy on [Streamlit Community Cloud](https://share.streamlit.io) — point it at
+`app/streamlit_app.py` on the `main` branch.
 
 ## Domain and dataset
 
