@@ -1,4 +1,4 @@
 __pycache__/
 *.pyc
 data/raw/
-.streamlit/
+# .streamlit/ — committed so Streamlit Cloud picks up theme/config
