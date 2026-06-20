@@ -247,6 +247,15 @@ METHOD_COLORS = {
     "Matrix Factorization (ALS)":"#5B3F87",
 }
 
+METHOD_ICONS = {
+    "Popularity":                "📊",
+    "Best value":                "💎",
+    "Item-based CF":             "🔗",
+    "User-based CF":             "👥",
+    "Content-based":             "🔍",
+    "Matrix Factorization (ALS)":"⚡",
+}
+
 METHOD_DESC = {
     "Popularity":
         "Recommends the most-interacted listings across all users. No personalization.",
@@ -384,7 +393,7 @@ def render_header(listings: pd.DataFrame, interactions: pd.DataFrame, users: pd.
     st.markdown(
         """
         <div class="app-header">
-            <h1>Barcelona Home Recommender</h1>
+            <h1>🏠 Barcelona Home Recommender</h1>
             <p>Five recommender algorithms compared on the idealista18 Barcelona dataset
             (Rey-Blanco et al., 2024, Environment and Planning B).</p>
         </div>
@@ -413,10 +422,10 @@ def render_header(listings: pd.DataFrame, interactions: pd.DataFrame, users: pd.
 
 def amenity_badges(row: pd.Series) -> str:
     fields = [
-        ("HASLIFT",            "Lift"),
-        ("HASTERRACE",         "Terrace"),
-        ("HASAIRCONDITIONING",  "A/C"),
-        ("HASPARKINGSPACE",    "Parking"),
+        ("HASLIFT",            "↑ Lift"),
+        ("HASTERRACE",         "⬚ Terrace"),
+        ("HASAIRCONDITIONING",  "❄ A/C"),
+        ("HASPARKINGSPACE",    "🅿 Parking"),
         ("HASSWIMMINGPOOL",    "Pool"),
         ("HASDOORMAN",         "Doorman"),
         ("HASGARDEN",          "Garden"),
@@ -475,7 +484,7 @@ def render_footer() -> None:
 
 def render_sidebar(users: pd.DataFrame, listings: pd.DataFrame, models: dict) -> dict:
     with st.sidebar:
-        st.subheader("Buyer")
+        st.subheader("👤 Buyer")
         personas = sorted(users["persona"].unique(), key=lambda p: PERSONA_LABELS.get(p, p))
         persona  = st.selectbox(
             "Persona",
@@ -485,13 +494,13 @@ def render_sidebar(users: pd.DataFrame, listings: pd.DataFrame, models: dict) ->
         persona_users = users[users["persona"] == persona]["user_id"].tolist()
         user_id = st.selectbox("User", persona_users[:20], index=0)
 
-        st.subheader("Filters")
+        st.subheader("🔍 Filters")
         neighborhoods = ["All neighborhoods"] + sorted(listings["NEIGHBORHOOD"].dropna().unique())
         neighborhood  = st.selectbox("Neighborhood", neighborhoods)
         price_max     = st.slider("Max price (€)", 50_000, 2_500_000, 800_000, step=25_000, format="€%d")
         min_rooms     = st.slider("Min rooms", 0, 6, 0)
 
-        st.subheader("Session")
+        st.subheader("🔖 Session")
         saved = st.session_state.get("saved_items", set())
         c1, c2 = st.columns(2)
         c1.metric("Saved", len(saved))
@@ -659,8 +668,9 @@ def view_for_you(
         label_visibility="collapsed",
     )
     color = METHOD_COLORS[method]
+    icon  = METHOD_ICONS[method]
     st.markdown(
-        f'<div class="method-tag" style="background:{color}">{method}</div>'
+        f'<div class="method-tag" style="background:{color}">{icon} {method}</div>'
         f'<div class="method-info">{METHOD_DESC[method]}</div>',
         unsafe_allow_html=True,
     )
@@ -730,9 +740,10 @@ def view_compare(
 
     for col, method in zip(cols, methods):
         color = METHOD_COLORS[method]
+        icon  = METHOD_ICONS[method]
         with col:
             st.markdown(
-                f'<div class="method-tag" style="background:{color}">{method}</div>'
+                f'<div class="method-tag" style="background:{color}">{icon} {method}</div>'
                 f'<div class="method-info" style="font-size:0.73rem">{METHOD_DESC[method]}</div>',
                 unsafe_allow_html=True,
             )
